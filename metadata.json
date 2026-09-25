@@ -1,10 +1,14 @@
 {
   "name": "ClipVault",
-  "description": "Windows-style clipboard history (Super+V) with a vault for notes and accounts.\n\n• Text and image history with search and pinned items\n• Pastes straight into the previous window\n• Notes and accounts section (Super+Shift+V); passwords are stored in the GNOME Keyring\n• Private mode, password generator and auto-clearing of copied passwords",
+  "description": "Windows-style clipboard history (Super+V) with a vault for notes and accounts.\n\n• Opens right under the text cursor and pastes into the field you were typing in\n• Text and image history with search, pinned items and tooltips\n• Notes and accounts (Super+Shift+V); passwords are stored in the GNOME Keyring\n• Password generator (Super+Alt+P) with configurable rules\n• Private mode and automatic clearing of copied passwords\n\nWhile enabled, ClipVault takes over Super+V from GNOME's notification list shortcut and restores it when disabled (this can be turned off in the preferences). Clipboard history is stored locally in ~/.local/share/clipvault and never leaves your computer.",
   "uuid": "clipvault@yeyo11.github.io",
   "settings-schema": "org.gnome.shell.extensions.clipvault",
   "gettext-domain": "clipvault@yeyo11.github.io",
-  "shell-version": ["46", "47", "48"],
+  "shell-version": [
+    "46",
+    "47",
+    "48"
+  ],
   "url": "https://github.com/yeyo11/clipvault",
-  "version-name": "1.0.0"
+  "version-name": "1.1.0"
 }

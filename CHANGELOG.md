@@ -6,6 +6,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-25
+
 ### Added
 - The popup now opens right below the text cursor of the focused field, like Windows' Win+V.
   It falls back to the mouse pointer when the app doesn't report its cursor. This is the new default
@@ -40,5 +42,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - Automatic takeover and restore of GNOME's <kbd>Super</kbd>+<kbd>V</kbd> shortcut.
 - Preferences window, optional top bar icon, and English and Spanish translations.
 
-[Unreleased]: https://github.com/yeyo11/clipvault/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/yeyo11/clipvault/releases/tag/v1.0.0
+[Unreleased]: https://github.com/yeyo11/clipvault/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/yeyo11/clipvault/compare/0c9e161...v1.1.0
+[1.0.0]: https://github.com/yeyo11/clipvault/tree/0c9e161

@@ -14,8 +14,21 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install tools
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends gettext zip
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends gettext zip libglib2.0-bin
 
+      - name: Check the tag matches metadata.json
+        run: |
+          VERSION=$(python3 -c "import json;print(json.load(open('metadata.json'))['version-name'])")
+          if [ "v$VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match version-name $VERSION in metadata.json"
+            exit 1
+          fi
+
+      - name: Check translations and schema
+        run: make lint
+
+      # Same layout as `gnome-extensions pack` (used by `make pack`), which
+      # is not available on the runner.
       - name: Build extension zip
         run: |
           UUID=$(python3 -c "import json;print(json.load(open('metadata.json'))['uuid'])")
@@ -25,8 +38,32 @@ jobs:
             msgfmt "$po" -o "locale/$lang/LC_MESSAGES/$UUID.mo"
           done
           zip -r "$UUID.shell-extension.zip" metadata.json extension.js prefs.js stylesheet.css lib schemas/*.xml locale
+          unzip -l "$UUID.shell-extension.zip"
+
+      - name: Release notes from CHANGELOG.md
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          awk -v v="$VERSION" '
+            index($0, "## [" v "]") == 1 { found = 1; next }
+            found && /^## \[/ { exit }
+            found { print }
+          ' CHANGELOG.md > notes.md
+          cat >> notes.md <<'NOTES'
+
+          ### Install or update
+          ```bash
+          wget https://github.com/yeyo11/clipvault/releases/latest/download/clipvault@yeyo11.github.io.shell-extension.zip
+          gnome-extensions install --force clipvault@yeyo11.github.io.shell-extension.zip
+          ```
+          Then restart GNOME Shell (log out and back in on Wayland; <kbd>Alt</kbd>+<kbd>F2</kbd> → `r` on X11) and run
+          `gnome-extensions enable clipvault@yeyo11.github.io` if it is a new install.
+          NOTES
+          sed -i 's/^          //' notes.md
+          cat notes.md
 
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" *.shell-extension.zip --title "ClipVault $GITHUB_REF_NAME" --generate-notes
+        run: |
+          gh release create "$GITHUB_REF_NAME" *.shell-extension.zip \
+            --title "ClipVault $GITHUB_REF_NAME" --notes-file notes.md

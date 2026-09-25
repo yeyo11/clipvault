@@ -39,6 +39,7 @@ export default class ClipVaultExtension extends Extension {
         this.settings = this.getSettings();
         this.store = new Store(this.settings);
         this._clipboard = St.Clipboard.get_default();
+        Secrets.init();
         this._caret = new CaretTracker();
         this._popup = new ClipboardPopup(this);
         this._timeouts = new Set();
@@ -75,6 +76,7 @@ export default class ClipVaultExtension extends Extension {
         this._popup = null;
         this._caret.destroy();
         this._caret = null;
+        Secrets.uninit();
 
         this._settingsIds.forEach(id => this.settings.disconnect(id));
         this._settingsIds = null;
@@ -92,6 +94,7 @@ export default class ClipVaultExtension extends Extension {
 
         this._indicator?.destroy();
         this._indicator = null;
+        this._indicatorIcon = null;
 
         this._notificationSource?.destroy();
         this._notificationSource = null;
@@ -147,6 +150,7 @@ export default class ClipVaultExtension extends Extension {
         if (!show) {
             this._indicator?.destroy();
             this._indicator = null;
+            this._indicatorIcon = null;
             return;
         }
         if (!this._indicator) {

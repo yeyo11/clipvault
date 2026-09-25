@@ -64,9 +64,24 @@ Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right unde
 
 ## Installation
 
-### From source
+Requires GNOME Shell 46, 47 or 48, which covers Ubuntu 24.04 and later and Fedora 40 and later.
 
-Requirements: GNOME Shell 46, 47 or 48, plus `gettext` and `make`. Ubuntu 24.04+ and Fedora 40+ are supported.
+### Option 1: extensions.gnome.org (easiest, updates automatically)
+
+Pending review. Once approved, it can be installed with one click from its page on
+[extensions.gnome.org](https://extensions.gnome.org) or from the **Extension Manager** app,
+and updates will arrive automatically.
+
+### Option 2: download the latest release (no git or build tools needed)
+
+```bash
+wget https://github.com/yeyo11/clipvault/releases/latest/download/clipvault@yeyo11.github.io.shell-extension.zip
+gnome-extensions install --force clipvault@yeyo11.github.io.shell-extension.zip
+```
+
+### Option 3: build from source
+
+Needs `git`, `make` and `gettext` (`sudo apt install git make gettext` on Ubuntu).
 
 ```bash
 git clone https://github.com/yeyo11/clipvault.git
@@ -74,22 +89,28 @@ cd clipvault
 make install
 ```
 
-Then restart GNOME Shell:
-- **X11**: press <kbd>Alt</kbd>+<kbd>F2</kbd>, type `r` and press <kbd>Enter</kbd>.
-- **Wayland**: log out and log back in.
+### After installing
 
-Finally, enable it:
+1. **Restart GNOME Shell** so it detects the extension:
+   - **Wayland** (Ubuntu's default): log out and log back in.
+   - **X11**: press <kbd>Alt</kbd>+<kbd>F2</kbd>, type `r` and press <kbd>Enter</kbd>.
+2. **Enable it**: `gnome-extensions enable clipvault@yeyo11.github.io`, or use the Extensions app.
 
-```bash
-make enable        # or: gnome-extensions enable clipvault@yeyo11.github.io
-```
+> **Tip:** disable any other clipboard manager that uses <kbd>Super</kbd>+<kbd>V</kbd>, for example
+> `gnome-extensions disable clipboard-indicator@tudmotu.com`.
 
-> **Tip:** disable any other clipboard manager that uses <kbd>Super</kbd>+<kbd>V</kbd> (for example
-> `gnome-extensions disable clipboard-indicator@tudmotu.com`).
+## Updating
 
-### From extensions.gnome.org
+Your history, notes and passwords are kept when you update.
 
-Not submitted yet. It will be linked here once it has been reviewed.
+| Installed with | How to update |
+|---|---|
+| extensions.gnome.org | Automatic. You can also check in the **Extension Manager** app. |
+| Release zip (option 2) | Run the same two commands again: the link always points to the latest version. |
+| Source (option 3) | `cd clipvault && git pull && make install` |
+
+Then restart GNOME Shell as described above. You don't need to enable it again.
+The installed version is shown in **Preferences → Accounts → About**.
 
 ## Usage
 
@@ -185,7 +206,7 @@ save account passwords.
 ## Uninstall
 
 ```bash
-make uninstall
+gnome-extensions uninstall clipvault@yeyo11.github.io
 rm -rf ~/.local/share/clipvault                     # history, images and notes
 # Account passwords: remove the "ClipVault: …" entries in Passwords and Keys (Seahorse)
 ```

@@ -93,3 +93,7 @@ To update an existing translation after strings change, run `make update-po` and
 - Include a screenshot for UI changes.
 
 By contributing you agree that your contributions are licensed under GPL-3.0-or-later.
+
+## Releasing
+
+Maintainers: see [docs/RELEASING.md](docs/RELEASING.md) for the release and extensions.gnome.org checklist.
