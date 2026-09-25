@@ -37,6 +37,8 @@ Useful targets:
 | `make logs` | Follow GNOME Shell logs filtered for ClipVault |
 | `make pot` / `make update-po` | Regenerate the translation template and merge it into every `.po` |
 | `make lint` | Check translations and the GSettings schema |
+| `make dist` | Build the release zip without GNOME tools (what CI and releases use) |
+| `make review` | Run Shexli, the extensions.gnome.org static analyzer (`pip install shexli "tree-sitter==0.25.*"`) |
 
 ## Code layout
 

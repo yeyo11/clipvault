@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install tools
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends gettext libglib2.0-bin
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends gettext libglib2.0-bin zip
 
       - name: JavaScript syntax
         run: |
@@ -26,3 +26,23 @@ jobs:
 
       - name: metadata.json is valid
         run: python3 -m json.tool metadata.json > /dev/null
+
+      - name: Build extension zip
+        run: make dist
+
+      # Same static analyzer extensions.gnome.org recommends before uploading.
+      # tree-sitter 0.26 makes shexli 0.2.x crash, hence the pin.
+      - name: Shexli (extensions.gnome.org review checks)
+        run: |
+          python3 -m venv /tmp/shexli
+          /tmp/shexli/bin/pip install -q shexli "tree-sitter==0.25.*"
+          /tmp/shexli/bin/shexli clipvault@yeyo11.github.io.shell-extension.zip || true
+          /tmp/shexli/bin/shexli --format json clipvault@yeyo11.github.io.shell-extension.zip > shexli.json || true
+          python3 - <<'PY'
+          import json, sys
+          counts = json.load(open('shexli.json'))['summary']['severity_counts']
+          blocking = {k: v for k, v in counts.items() if k in ('error', 'warning')}
+          if blocking:
+              sys.exit(f'Shexli reported {blocking}')
+          print(f'Shexli OK: {counts}')
+          PY

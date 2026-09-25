@@ -11,7 +11,11 @@ Checklist for maintainers.
 3. In `CHANGELOG.md`, rename *Unreleased* to the new version and date, add a new empty
    *Unreleased* section, and update the compare links at the bottom.
 4. Run `make update-po`, check that `po/*.po` have no untranslated or fuzzy strings, then run `make lint`.
-5. Commit: `git commit -am "Release X.Y.Z"`.
+5. Run `make review` to execute [Shexli](https://pypi.org/project/shexli/), the static analyzer
+   extensions.gnome.org recommends. Install it with `pip install shexli "tree-sitter==0.25.*"`,
+   because tree-sitter 0.26 crashes shexli 0.2.x. CI fails on errors and warnings. The only expected
+   finding is `EGO-A-005 manual_review` (clipboard access), which the description declares.
+6. Commit: `git commit -am "Release X.Y.Z"`.
 
 ## 2. Publish on GitHub
 
@@ -31,7 +35,7 @@ commands, because `releases/latest/download/…` always points to the newest rel
 ## 3. Publish on extensions.gnome.org (EGO)
 
 1. Download the zip from the GitHub release. That way the reviewed file is exactly what was
-   released. Alternatively, build it with `make pack`.
+   released. Alternatively, build it with `make dist`.
 2. Sign in at <https://extensions.gnome.org> and open <https://extensions.gnome.org/upload/>.
 3. Upload the zip, accept the license terms (GPL-compatible), and submit.
 4. Wait for the manual review, which usually takes from a few days to a couple of weeks. If

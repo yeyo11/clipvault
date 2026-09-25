@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClipVault\n"
 "Report-Msgid-Bugs-To: https://github.com/yeyo11/clipvault/issues\n"
-"POT-Creation-Date: 2026-09-25 20:20+0200\n"
+"POT-Creation-Date: 2026-09-25 20:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,44 +17,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: extension.js:256
+#: extension.js:266
 #, javascript-format
 msgid "Could not open the preferences: %s"
 msgstr ""
 
-#: extension.js:314
+#: extension.js:324
 #, javascript-format
 msgid "Could not load the image: %s"
 msgstr ""
 
-#: extension.js:328
+#: extension.js:340
 #, javascript-format
 msgid "Could not read the password from the keyring: %s"
 msgstr ""
 
-#: extension.js:334
+#: extension.js:346
 #, javascript-format
 msgid "“%s” has no saved password"
 msgstr ""
 
-#: extension.js:352
+#: extension.js:364
 msgid "Pasted into the focused field and copied to the clipboard."
 msgstr ""
 
-#: extension.js:353
+#: extension.js:365
 msgid "Copied to the clipboard."
 msgstr ""
 
-#: extension.js:355
+#: extension.js:367
 #, javascript-format
 msgid "The clipboard will be cleared in %d seconds."
 msgstr ""
 
-#: extension.js:359
+#: extension.js:371
 msgid "Password generated"
 msgstr ""
 
-#: extension.js:363
+#: extension.js:375
 msgid "Save as account"
 msgstr ""
 
@@ -127,7 +127,7 @@ msgid "Popup position"
 msgstr ""
 
 #: prefs.js:119
-msgid "Next to the text cursor (like Windows)"
+msgid "Next to the text cursor"
 msgstr ""
 
 #: prefs.js:120

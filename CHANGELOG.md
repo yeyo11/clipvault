@@ -6,10 +6,27 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-09-25
+
+### Changed
+- All file access (history, notes, images) is now asynchronous, so GNOME Shell never waits on the disk.
+  Anything copied while the history is still loading is merged instead of being lost.
+- The description now states clearly how ClipVault uses the clipboard.
+
+### Fixed
+- libsecret is loaded when the extension is enabled and released when it is disabled, instead of at
+  import time.
+- Saving an account while the extension is being disabled (for example, when the screen locks) no
+  longer throws an error.
+
+### Development
+- `make dist` builds the release zip without GNOME tools, and `make review` runs the
+  extensions.gnome.org static analyzer (Shexli). CI now fails on any Shexli error or warning.
+
 ## [1.1.0] - 2026-09-25
 
 ### Added
-- The popup now opens right below the text cursor of the focused field, like Windows' Win+V.
+- The popup now opens right below the text cursor of the focused field.
   It falls back to the mouse pointer when the app doesn't report its cursor. This is the new default
   "Popup position".
 - Opening the popup from the top bar icon always places it next to the mouse pointer.
@@ -32,7 +49,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 ## [1.0.0] - 2026-09-25
 
 ### Added
-- Windows-style clipboard history popup on <kbd>Super</kbd>+<kbd>V</kbd> for text and images.
+- Clipboard history popup on <kbd>Super</kbd>+<kbd>V</kbd> for text and images.
 - Search, keyboard navigation, pinned items, and remove / clear with confirmation.
 - Automatic paste into the previous window (<kbd>Shift</kbd>+<kbd>Insert</kbd> or <kbd>Ctrl</kbd>+<kbd>V</kbd>).
 - Notes & accounts vault on <kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>, with passwords stored in the GNOME Keyring.
@@ -42,6 +59,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - Automatic takeover and restore of GNOME's <kbd>Super</kbd>+<kbd>V</kbd> shortcut.
 - Preferences window, optional top bar icon, and English and Spanish translations.
 
-[Unreleased]: https://github.com/yeyo11/clipvault/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/yeyo11/clipvault/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/yeyo11/clipvault/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/yeyo11/clipvault/compare/0c9e161...v1.1.0
 [1.0.0]: https://github.com/yeyo11/clipvault/tree/0c9e161

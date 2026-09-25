@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //
-// ClipVault: Windows-style (Super+V) clipboard history with a notes and
-// accounts vault.
+// ClipVault: a clipboard history (Super+V) that pops up where you type, with
+// a vault for notes and accounts.
 //
 // Some techniques come from SUPERCILEX/gnome-clipboard-history (pasting by
 // simulating Shift+Insert, listening to Mutter's selection `owner-changed`).
@@ -92,12 +92,13 @@ export default class ClipVaultExtension extends Extension {
             GLib.source_remove(id);
         this._timeouts = null;
 
-        this._indicator?.destroy();
-        this._indicator = null;
-        this._indicatorIcon = null;
+        this._destroyIndicator();
 
-        this._notificationSource?.destroy();
-        this._notificationSource = null;
+        if (this._notificationSource) {
+            this._notificationSource.disconnect(this._notificationSourceDestroyId);
+            this._notificationSource.destroy();
+            this._notificationSource = null;
+        }
 
         this.store.destroy();
         this.store = null;
@@ -148,16 +149,14 @@ export default class ClipVaultExtension extends Extension {
     _syncIndicator() {
         const show = this.settings.get_boolean('show-panel-icon');
         if (!show) {
-            this._indicator?.destroy();
-            this._indicator = null;
-            this._indicatorIcon = null;
+            this._destroyIndicator();
             return;
         }
         if (!this._indicator) {
             this._indicator = new PanelMenu.Button(0.5, this.metadata.name, true);
             this._indicatorIcon = new St.Icon({style_class: 'system-status-icon'});
             this._indicator.add_child(this._indicatorIcon);
-            this._indicator.connect('button-press-event', (_a, event) => {
+            this._indicatorPressId = this._indicator.connect('button-press-event', (_a, event) => {
                 // Middle click toggles private mode
                 if (event.get_button() === Clutter.BUTTON_MIDDLE)
                     this.settings.set_boolean('private-mode', !this.settings.get_boolean('private-mode'));
@@ -170,6 +169,17 @@ export default class ClipVaultExtension extends Extension {
         this._indicatorIcon.icon_name = this.settings.get_boolean('private-mode')
             ? 'view-conceal-symbolic'
             : 'edit-paste-symbolic';
+    }
+
+    _destroyIndicator() {
+        if (!this._indicator)
+            return;
+        this._indicator.disconnect(this._indicatorPressId);
+        this._indicatorPressId = 0;
+        this._indicatorIcon.destroy();
+        this._indicatorIcon = null;
+        this._indicator.destroy();
+        this._indicator = null;
     }
 
     // -------------------------------------------------------------- clipboard
@@ -305,15 +315,17 @@ export default class ClipVaultExtension extends Extension {
         }
     }
 
-    useImage(item, {paste = true} = {}) {
+    async useImage(item, {paste = true} = {}) {
         this._popup.close();
         let bytes;
         try {
-            bytes = this.store.loadImage(item);
+            bytes = await this.store.loadImage(item);
         } catch (e) {
             Main.notifyError(this.metadata.name, _('Could not load the image: %s').format(e.message));
             return;
         }
+        if (!this.store) // disabled while loading
+            return;
         this._clipboard.set_content(St.ClipboardType.CLIPBOARD, 'image/png', bytes);
         if (paste && this.settings.get_boolean('paste-on-select'))
             this._sendPaste(true);
@@ -371,7 +383,9 @@ export default class ClipVaultExtension extends Extension {
                 title: this.metadata.name,
                 iconName: 'dialog-password-symbolic',
             });
-            this._notificationSource.connect('destroy', () => {
+            // The source destroys itself once all its notifications are gone.
+            this._notificationSourceDestroyId = this._notificationSource.connect('destroy', () => {
+                this._notificationSource.disconnect(this._notificationSourceDestroyId);
                 this._notificationSource = null;
             });
             Main.messageTray.add(this._notificationSource);

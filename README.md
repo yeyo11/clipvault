@@ -2,7 +2,7 @@
 
 # ClipVault
 
-**Windows-style clipboard history for GNOME, with a vault for notes and accounts.**
+**A clipboard history for GNOME that pops up right where you type, with a private vault for notes and accounts.**
 
 Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right under your text cursor, and whatever you pick is typed into that field.
 
@@ -17,7 +17,7 @@ Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right unde
 ## Features
 
 **Clipboard history**
-- Opens with <kbd>Super</kbd>+<kbd>V</kbd> **right below the text cursor** of the field you are typing in, just like Windows.
+- Opens with <kbd>Super</kbd>+<kbd>V</kbd> **right below the text cursor** of the field you are typing in.
   If the app doesn't report its cursor, it opens next to the mouse pointer. It can also open centered.
 - Records **text and images**, skips duplicates and moves reused items back to the top.
 - **Instant search**, full keyboard navigation and **pinned items** that survive "Clear history".

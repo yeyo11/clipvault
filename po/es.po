@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClipVault\n"
 "Report-Msgid-Bugs-To: https://github.com/yeyo11/clipvault/issues\n"
-"POT-Creation-Date: 2026-09-25 20:20+0200\n"
+"POT-Creation-Date: 2026-09-25 20:32+0200\n"
 "PO-Revision-Date: 2026-09-25 19:12+0200\n"
 "Last-Translator: Jose Antonio Garrido <yeyochico@gmail.com>\n"
 "Language-Team: Spanish\n"
@@ -17,44 +17,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: extension.js:256
+#: extension.js:266
 #, javascript-format
 msgid "Could not open the preferences: %s"
 msgstr "No se pudieron abrir las preferencias: %s"
 
-#: extension.js:314
+#: extension.js:324
 #, javascript-format
 msgid "Could not load the image: %s"
 msgstr "No se pudo cargar la imagen: %s"
 
-#: extension.js:328
+#: extension.js:340
 #, javascript-format
 msgid "Could not read the password from the keyring: %s"
 msgstr "No se pudo leer la contraseña del llavero: %s"
 
-#: extension.js:334
+#: extension.js:346
 #, javascript-format
 msgid "“%s” has no saved password"
 msgstr "«%s» no tiene contraseña guardada"
 
-#: extension.js:352
+#: extension.js:364
 msgid "Pasted into the focused field and copied to the clipboard."
 msgstr "Pegada en el campo activo y copiada al portapapeles."
 
-#: extension.js:353
+#: extension.js:365
 msgid "Copied to the clipboard."
 msgstr "Copiada al portapapeles."
 
-#: extension.js:355
+#: extension.js:367
 #, javascript-format
 msgid "The clipboard will be cleared in %d seconds."
 msgstr "El portapapeles se borrará en %d segundos."
 
-#: extension.js:359
+#: extension.js:371
 msgid "Password generated"
 msgstr "Contraseña generada"
 
-#: extension.js:363
+#: extension.js:375
 msgid "Save as account"
 msgstr "Guardar como cuenta"
 
@@ -132,8 +132,8 @@ msgid "Popup position"
 msgstr "Posición de la ventana"
 
 #: prefs.js:119
-msgid "Next to the text cursor (like Windows)"
-msgstr "Junto al cursor de texto (como en Windows)"
+msgid "Next to the text cursor"
+msgstr "Junto al cursor de texto"
 
 #: prefs.js:120
 msgid "Next to the mouse pointer"
@@ -617,5 +617,3 @@ msgstr "Escribe al menos un título o contenido"
 msgid "Error saving the password: %s"
 msgstr "Error guardando la contraseña: %s"
 
-#~ msgid "Saved notes and accounts (Super+Shift+V)"
-#~ msgstr "Notas y cuentas guardadas (Super+Shift+V)"

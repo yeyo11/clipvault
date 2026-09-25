@@ -5,7 +5,7 @@ SCHEMA   = schemas/org.gnome.shell.extensions.clipvault.gschema.xml
 POT      = po/clipvault.pot
 PO_FILES = $(wildcard po/*.po)
 
-.PHONY: all pack install uninstall enable disable prefs pot update-po logs lint clean
+.PHONY: all pack dist review install uninstall enable disable prefs pot update-po logs lint clean
 
 all: pack
 
@@ -19,6 +19,24 @@ $(ZIP): $(SOURCES) $(SCHEMA) $(PO_FILES)
 		--podir=po \
 		--gettext-domain=$(UUID) \
 		.
+
+## Build the same zip without GNOME tools (used by CI and the release workflow)
+dist: $(SOURCES) $(SCHEMA) $(PO_FILES)
+	rm -rf build $(ZIP)
+	mkdir -p build/schemas
+	cp -r metadata.json extension.js prefs.js stylesheet.css lib build/
+	cp $(SCHEMA) build/schemas/
+	for po in $(PO_FILES); do \
+		lang=$$(basename $$po .po); \
+		mkdir -p build/locale/$$lang/LC_MESSAGES; \
+		msgfmt $$po -o build/locale/$$lang/LC_MESSAGES/$(UUID).mo; \
+	done
+	cd build && zip -qr ../$(ZIP) .
+	rm -rf build
+
+## Run the extensions.gnome.org static analyzer (pip install shexli "tree-sitter==0.25.*")
+review: dist
+	shexli $(ZIP)
 
 ## Install for the current user (restart GNOME Shell afterwards)
 install: pack
@@ -59,4 +77,4 @@ logs:
 	journalctl -f -o cat /usr/bin/gnome-shell | grep --line-buffered -i -E "clipvault|JS ERROR"
 
 clean:
-	rm -f $(ZIP) schemas/gschemas.compiled
+	rm -rf $(ZIP) build schemas/gschemas.compiled

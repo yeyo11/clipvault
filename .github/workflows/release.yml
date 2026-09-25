@@ -27,18 +27,10 @@ jobs:
       - name: Check translations and schema
         run: make lint
 
-      # Same layout as `gnome-extensions pack` (used by `make pack`), which
-      # is not available on the runner.
       - name: Build extension zip
         run: |
-          UUID=$(python3 -c "import json;print(json.load(open('metadata.json'))['uuid'])")
-          for po in po/*.po; do
-            lang=$(basename "$po" .po)
-            mkdir -p "locale/$lang/LC_MESSAGES"
-            msgfmt "$po" -o "locale/$lang/LC_MESSAGES/$UUID.mo"
-          done
-          zip -r "$UUID.shell-extension.zip" metadata.json extension.js prefs.js stylesheet.css lib schemas/*.xml locale
-          unzip -l "$UUID.shell-extension.zip"
+          make dist
+          unzip -l clipvault@yeyo11.github.io.shell-extension.zip
 
       - name: Release notes from CHANGELOG.md
         run: |
