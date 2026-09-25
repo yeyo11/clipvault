@@ -12,6 +12,10 @@
       <default><![CDATA[['<Super><Shift>v']]]></default>
       <summary>Open the notes and accounts section</summary>
     </key>
+    <key name="generate-password" type="as">
+      <default><![CDATA[['<Super><Alt>p']]]></default>
+      <summary>Generate a password and paste it into the focused field</summary>
+    </key>
     <key name="free-super-v" type="b">
       <default>true</default>
       <summary>Remove our shortcuts from GNOME's notification list shortcut</summary>
@@ -65,6 +69,12 @@
       <range min="5" max="2000"/>
       <summary>Maximum number of unpinned items</summary>
     </key>
+    <key name="preview-lines" type="i">
+      <default>4</default>
+      <range min="1" max="20"/>
+      <summary>Lines of text shown per history item</summary>
+      <description>Longer items are cut with an ellipsis (…). Long lines that wrap count as several lines.</description>
+    </key>
     <key name="save-history" type="b">
       <default>true</default>
       <summary>Keep the history across sessions</summary>
@@ -85,6 +95,37 @@
     <key name="private-mode" type="b">
       <default>false</default>
       <summary>Private mode: record nothing while enabled</summary>
+    </key>
+
+    <!-- Password generator -->
+    <key name="password-length" type="i">
+      <default>20</default>
+      <range min="4" max="128"/>
+      <summary>Length of generated passwords</summary>
+    </key>
+    <key name="password-uppercase" type="b">
+      <default>true</default>
+      <summary>Include uppercase letters (A–Z)</summary>
+    </key>
+    <key name="password-lowercase" type="b">
+      <default>true</default>
+      <summary>Include lowercase letters (a–z)</summary>
+    </key>
+    <key name="password-digits" type="b">
+      <default>true</default>
+      <summary>Include digits (0–9)</summary>
+    </key>
+    <key name="password-symbols" type="b">
+      <default>true</default>
+      <summary>Include symbols</summary>
+    </key>
+    <key name="password-symbol-set" type="s">
+      <default>'!@#$%&amp;*-_=+?'</default>
+      <summary>Symbols that generated passwords may contain</summary>
+    </key>
+    <key name="password-exclude-ambiguous" type="b">
+      <default>true</default>
+      <summary>Avoid look-alike characters such as 0/O and 1/l/I</summary>
     </key>
 
     <!-- Accounts -->

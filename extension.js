@@ -14,6 +14,7 @@ import Shell from 'gi://Shell';
 import St from 'gi://St';
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as MessageTray from 'resource:///org/gnome/shell/ui/messageTray.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
@@ -21,6 +22,7 @@ import {Store} from './lib/store.js';
 import {ClipboardPopup, TAB_HISTORY, TAB_NOTES} from './lib/popup.js';
 import * as Secrets from './lib/secrets.js';
 import {CaretTracker} from './lib/caret.js';
+import * as Passwords from './lib/passwords.js';
 
 // evdev key codes for the virtual keyboard
 const KEY_SHIFT_L = 42;
@@ -46,6 +48,7 @@ export default class ClipVaultExtension extends Extension {
         this._keybindings = [];
         this._bind('toggle-history', () => this._popup.toggle(TAB_HISTORY));
         this._bind('toggle-notes', () => this._popup.toggle(TAB_NOTES));
+        this._bind('generate-password', () => this.generatePassword());
 
         this._selection = global.display.get_selection();
         this._ownerChangedId = this._selection.connect('owner-changed', (_sel, type) => {
@@ -89,6 +92,9 @@ export default class ClipVaultExtension extends Extension {
 
         this._indicator?.destroy();
         this._indicator = null;
+
+        this._notificationSource?.destroy();
+        this._notificationSource = null;
 
         this.store.destroy();
         this.store = null;
@@ -221,6 +227,43 @@ export default class ClipVaultExtension extends Extension {
 
     // -------------------------------------------------------- API for popup
 
+    /**
+     * Opens the preferences window, or raises it if it's already open.
+     * Extension.openPreferences() fails silently in that case: the Extensions
+     * service answers "Already showing a prefs dialog" and nothing appears,
+     * because the existing window may be hidden behind others.
+     */
+    openPreferences() {
+        if (this._raisePrefsWindow())
+            return;
+        Gio.DBus.session.call(
+            'org.gnome.Shell.Extensions', '/org/gnome/Shell/Extensions',
+            'org.gnome.Shell.Extensions', 'OpenExtensionPrefs',
+            new GLib.Variant('(ssa{sv})', [this.uuid, '', {}]),
+            null, Gio.DBusCallFlags.NONE, -1, null,
+            (connection, res) => {
+                try {
+                    connection.call_finish(res);
+                } catch (e) {
+                    if (this._raisePrefsWindow())
+                        return;
+                    console.error(`[clipvault] Could not open preferences: ${e.message}`);
+                    Main.notifyError(this.metadata.name,
+                        _('Could not open the preferences: %s').format(e.message));
+                }
+            });
+    }
+
+    _raisePrefsWindow() {
+        const window = global.display.list_all_windows().find(w =>
+            w.get_wm_class() === 'org.gnome.Shell.Extensions' &&
+            w.get_title()?.includes(this.metadata.name));
+        if (!window)
+            return false;
+        Main.activateWindow(window);
+        return true;
+    }
+
     /** Caret rectangle of the focused text field, or null. */
     get caretRect() {
         return this._caret.rect;
@@ -288,5 +331,47 @@ export default class ClipVaultExtension extends Extension {
             return;
         }
         this.useText(password, {paste, record: false, sensitive: true});
+    }
+
+    /**
+     * Generates a password with the configured rules and pastes it into the
+     * focused field. It is never recorded in the history, and the
+     * notification offers to save it as an account so it isn't lost.
+     */
+    generatePassword() {
+        const password = Passwords.generatePassword(Passwords.optionsFromSettings(this.settings));
+        this.useText(password, {paste: true, record: false, sensitive: true});
+
+        const pasted = this.settings.get_boolean('paste-on-select');
+        const seconds = this.settings.get_int('clear-secret-seconds');
+        let body = pasted
+            ? _('Pasted into the focused field and copied to the clipboard.')
+            : _('Copied to the clipboard.');
+        if (seconds > 0)
+            body += ` ${_('The clipboard will be cleared in %d seconds.').format(seconds)}`;
+
+        const notification = new MessageTray.Notification({
+            source: this._getNotificationSource(),
+            title: _('Password generated'),
+            body,
+            isTransient: true,
+        });
+        notification.addAction(_('Save as account'),
+            () => this._popup.open(TAB_NOTES, 'center', {newAccountPassword: password}));
+        this._notificationSource.addNotification(notification);
+    }
+
+    _getNotificationSource() {
+        if (!this._notificationSource) {
+            this._notificationSource = new MessageTray.Source({
+                title: this.metadata.name,
+                iconName: 'dialog-password-symbolic',
+            });
+            this._notificationSource.connect('destroy', () => {
+                this._notificationSource = null;
+            });
+            Main.messageTray.add(this._notificationSource);
+        }
+        return this._notificationSource;
     }
 }

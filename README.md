@@ -21,6 +21,8 @@ Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right unde
   If the app doesn't report its cursor, it opens next to the mouse pointer. It can also open centered.
 - Records **text and images**, skips duplicates and moves reused items back to the top.
 - **Instant search**, full keyboard navigation and **pinned items** that survive "Clear history".
+  Pinned items get their own highlighted section at the top, so you can spot them at a glance.
+- Choose how many lines each item shows before it is cut with "…" (4 by default).
 - **Pastes straight into the previous window**. Use <kbd>Shift</kbd>+<kbd>Enter</kbd> to copy without pasting.
 - Turn any history item into a saved note with <kbd>Ctrl</kbd>+<kbd>S</kbd>.
 
@@ -29,7 +31,10 @@ Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right unde
 - **Accounts**: title, username, password, URL and notes, with one-click *Username* / *Password* paste buttons.
 - **Passwords live in the GNOME Keyring** (libsecret) and are never written to disk in plain text.
 - Copied passwords are **cleared from the clipboard after 30 s** and never enter the history.
-- Built-in **strong password generator**.
+- **Password generator** (<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd>): creates a strong password and types it into
+  the field you are in, which is perfect for sign-up forms. A notification lets you **save it as an account** right away.
+  You can configure its length, character types (uppercase, lowercase, digits, symbols), which symbols to use,
+  and whether to avoid look-alike characters. The preview shows its strength live.
 
 **Privacy**
 - **Private mode** stops all recording. Toggle it from the popup, the settings, or by middle-clicking the top bar icon.
@@ -39,6 +44,7 @@ Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right unde
 **Integration**
 - Takes over <kbd>Super</kbd>+<kbd>V</kbd>, which GNOME uses for the notification list, and gives it back when the extension is disabled.
 - Top bar icon (optional): left click for history, right click for notes, middle click for private mode.
+- Every button has a **tooltip** explaining what it does, including its keyboard shortcut.
 - Translatable UI. It ships in English and Spanish.
 
 <p align="center"><img src="docs/screenshots/caret.png" width="600" alt="The popup opens under the text cursor"></p>
@@ -46,9 +52,13 @@ Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right unde
 <details>
 <summary><b>More screenshots</b></summary>
 
-| Search | Account editor | Preferences |
+| Tooltips | Search | Account editor |
 |---|---|---|
-| <img src="docs/screenshots/search.png" width="260"> | <img src="docs/screenshots/account-editor.png" width="260"> | <img src="docs/screenshots/preferences.png" width="260"> |
+| <img src="docs/screenshots/tooltip.png" width="260"> | <img src="docs/screenshots/search.png" width="260"> | <img src="docs/screenshots/account-editor.png" width="260"> |
+
+| Preferences | Password generator |
+|---|---|
+| <img src="docs/screenshots/preferences.png" width="340"> | <img src="docs/screenshots/password-generator.png" width="340"> |
 
 </details>
 
@@ -97,6 +107,9 @@ Not submitted yet. It will be linked here once it has been reviewed.
 | <kbd>Tab</kbd> | Switch to notes | Switch to history |
 | <kbd>Esc</kbd> | Clear search, then close | Clear search, then close |
 
+Anywhere, <kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd> generates a password and pastes it into the focused field.
+The 🔑 button in the popup does the same.
+
 Typing always goes to the search box. In the editor, <kbd>Tab</kbd> moves between fields,
 <kbd>Ctrl</kbd>+<kbd>S</kbd> or <kbd>Ctrl</kbd>+<kbd>Enter</kbd> saves, and <kbd>Esc</kbd> cancels.
 
@@ -107,14 +120,17 @@ Open them from the ⚙ button in the popup, from the Extensions app, or with `ma
 | Setting | Default |
 |---|---|
 | Open history / notes shortcuts | <kbd>Super</kbd>+<kbd>V</kbd> / <kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd> |
+| Generate password shortcut | <kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd> |
 | Take over Super+V from GNOME | On |
 | Paste on select | On |
 | Keys used to paste text | <kbd>Shift</kbd>+<kbd>Insert</kbd> (works in terminals too) or <kbd>Ctrl</kbd>+<kbd>V</kbd> |
 | Popup position / size | Next to the text cursor (falls back to pointer), 420×540 |
 | History size (unpinned items) | 100 |
+| Lines shown per item | 4 |
 | Keep history across sessions / save images / max image size | On / On / 10 MiB |
 | Private mode / ignore secret content | Off / On |
 | Clear copied passwords after | 30 s |
+| Password generator | 20 characters; uppercase, lowercase, digits and symbols `!@#$%&*-_=+?`; avoids look-alikes |
 
 ## Privacy & security
 

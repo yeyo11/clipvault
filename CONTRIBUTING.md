@@ -47,7 +47,8 @@ lib/popup.js     The popup UI: tabs, search, history/notes lists, note/account e
                  and all keyboard handling.
 lib/store.js     Persistence of history, images and notes (~/.local/share/clipvault).
 lib/caret.js     Tracks the text cursor position reported through IBus, for popup placement.
-lib/secrets.js   Account passwords in the GNOME Keyring (libsecret) and the password generator.
+lib/secrets.js   Account passwords in the GNOME Keyring (libsecret).
+lib/passwords.js Password generator (no Shell imports, so prefs.js can use it too).
 prefs.js         Preferences window (libadwaita).
 stylesheet.css   Popup styles (all classes are prefixed with `cv-`).
 schemas/         GSettings schema.

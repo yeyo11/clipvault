@@ -80,6 +80,30 @@
   border-color: rgba(98, 160, 234, 0.75);
 }
 .cv-row:active { background-color: rgba(255, 255, 255, 0.16); }
+/* Pinned items: accent edge + tint so they stand out at a glance */
+.cv-row-pinned {
+  background-color: rgba(98, 160, 234, 0.10);
+  border-color: rgba(98, 160, 234, 0.28);
+  border-left-width: 3px;
+  border-left-color: #62a0ea;
+  padding-left: 10px;
+}
+.cv-row-pinned:selected {
+  background-color: rgba(98, 160, 234, 0.20);
+  border-color: rgba(98, 160, 234, 0.85);
+}
+.cv-row-pinned .cv-toggle:checked { color: #62a0ea; }
+
+/* Section headers ("Pinned" / "Recent") */
+.cv-section {
+  spacing: 6px;
+  padding: 6px 4px 0 4px;
+  font-size: 8.5pt;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.50);
+}
+.cv-section-pinned { color: #62a0ea; }
+
 .cv-row-box { spacing: 10px; }
 .cv-row-side { spacing: 2px; }
 
@@ -121,6 +145,17 @@
 }
 .cv-multiline, .cv-multiline:focus { background-color: transparent; border-color: transparent; }
 .cv-editor-buttons { spacing: 6px; padding-top: 4px; }
+
+/* Tooltips */
+.cv-tooltip {
+  background-color: rgba(12, 12, 12, 0.96);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 5px 9px;
+  font-size: 9pt;
+  font-weight: normal;
+}
 
 /* Footer */
 .cv-footer {

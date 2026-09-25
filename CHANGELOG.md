@@ -11,6 +11,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
   It falls back to the mouse pointer when the app doesn't report its cursor. This is the new default
   "Popup position".
 - Opening the popup from the top bar icon always places it next to the mouse pointer.
+- Tooltips on every button, showing what it does and its keyboard shortcut.
+- Pinned items have their own highlighted "Pinned" section, with an accent edge and tint.
+- New "Lines shown per item" setting (1–20, default 4). Longer text ends with "…".
+- Password generator shortcut (<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd>) and a 🔑 button in the popup. Both paste
+  a new password into the focused field. It is never recorded in the history, and a notification
+  offers to save it as an account.
+- Configurable password rules: length, uppercase, lowercase, digits, symbols, the allowed
+  symbols, and avoiding look-alike characters. A new *Passwords* preferences page shows a
+  live preview and strength.
+
+### Fixed
+- The ⚙ button did nothing when the preferences window was already open, for example behind
+  another window. It now brings that window to the front.
+- Preferences group titles and descriptions containing `&` or `<…>` were shown empty.
+- Filling in editor fields no longer logs Clutter input-method warnings.
 
 ## [1.0.0] - 2026-09-25
 

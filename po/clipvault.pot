@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClipVault\n"
 "Report-Msgid-Bugs-To: https://github.com/yeyo11/clipvault/issues\n"
-"POT-Creation-Date: 2026-09-25 19:24+0200\n"
+"POT-Creation-Date: 2026-09-25 19:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,366 +17,586 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: extension.js:267
+#: extension.js:252
+#, javascript-format
+msgid "Could not open the preferences: %s"
+msgstr ""
+
+#: extension.js:310
 #, javascript-format
 msgid "Could not load the image: %s"
 msgstr ""
 
-#: extension.js:281
+#: extension.js:324
 #, javascript-format
 msgid "Could not read the password from the keyring: %s"
 msgstr ""
 
-#: extension.js:287
+#: extension.js:330
 #, javascript-format
 msgid "“%s” has no saved password"
 msgstr ""
 
-#: prefs.js:48
+#: extension.js:348
+msgid "Pasted into the focused field and copied to the clipboard."
+msgstr ""
+
+#: extension.js:349
+msgid "Copied to the clipboard."
+msgstr ""
+
+#: extension.js:351
+#, javascript-format
+msgid "The clipboard will be cleared in %d seconds."
+msgstr ""
+
+#: extension.js:355
+msgid "Password generated"
+msgstr ""
+
+#: extension.js:359
+msgid "Save as account"
+msgstr ""
+
+#: prefs.js:60
 msgid "Disabled"
 msgstr ""
 
-#: prefs.js:80
+#: prefs.js:99
 msgid "General"
 msgstr ""
 
-#: prefs.js:84
+#: prefs.js:102
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: prefs.js:85
+#: prefs.js:103
 msgid ""
 "GTK accelerator syntax, e.g. <Super>v or <Control><Alt>h. Applied on Enter "
 "or when leaving the field; leave empty to disable."
 msgstr ""
 
-#: prefs.js:87
+#: prefs.js:104
 msgid "Open history"
 msgstr ""
 
-#: prefs.js:88
+#: prefs.js:105
 msgid "Open notes & accounts"
 msgstr ""
 
-#: prefs.js:89
+#: prefs.js:106 lib/popup.js:368
+msgid "Generate a password and paste it"
+msgstr ""
+
+#: prefs.js:107
 msgid "Take over Super+V from GNOME"
 msgstr ""
 
-#: prefs.js:90
+#: prefs.js:108
 msgid ""
 "GNOME uses Super+V to open the notification list. It is removed there and "
 "restored when the extension is disabled."
 msgstr ""
 
-#: prefs.js:93
+#: prefs.js:111
 msgid "Behavior"
 msgstr ""
 
-#: prefs.js:94
+#: prefs.js:112
 msgid "Paste on select"
 msgstr ""
 
-#: prefs.js:95
+#: prefs.js:113
 msgid "When disabled, selecting an item only copies it to the clipboard"
 msgstr ""
 
-#: prefs.js:96
+#: prefs.js:114
 msgid "Keys used to paste text"
 msgstr ""
 
-#: prefs.js:97
+#: prefs.js:115
 msgid "Shift+Insert (also works in terminals)"
 msgstr ""
 
-#: prefs.js:98
+#: prefs.js:116
 msgid "Ctrl+V"
 msgstr ""
 
-#: prefs.js:100
+#: prefs.js:118
 msgid "Popup position"
 msgstr ""
 
-#: prefs.js:101
+#: prefs.js:119
 msgid "Next to the text cursor (like Windows)"
 msgstr ""
 
-#: prefs.js:102
+#: prefs.js:120
 msgid "Next to the mouse pointer"
 msgstr ""
 
-#: prefs.js:103
+#: prefs.js:121
 msgid "Center of the screen"
 msgstr ""
 
-#: prefs.js:105
+#: prefs.js:123
 msgid "Width"
 msgstr ""
 
-#: prefs.js:105 prefs.js:106
+#: prefs.js:123 prefs.js:124
 msgid "pixels"
 msgstr ""
 
-#: prefs.js:106
+#: prefs.js:124
 msgid "Height"
 msgstr ""
 
-#: prefs.js:107
+#: prefs.js:125
 msgid "Top bar icon"
 msgstr ""
 
-#: prefs.js:108
+#: prefs.js:126
 msgid "Click: history · right click: notes · middle click: private mode"
 msgstr ""
 
-#: prefs.js:112 prefs.js:115 lib/popup.js:209
+#: prefs.js:130 prefs.js:133 lib/popup.js:346
 msgid "History"
 msgstr ""
 
-#: prefs.js:116
+#: prefs.js:134
 msgid "Maximum size"
 msgstr ""
 
-#: prefs.js:116
+#: prefs.js:134
 msgid "Unpinned items to keep"
 msgstr ""
 
-#: prefs.js:117
+#: prefs.js:135
+msgid "Lines shown per item"
+msgstr ""
+
+#: prefs.js:136
+msgid "Longer text is cut with “…”"
+msgstr ""
+
+#: prefs.js:137
 msgid "Keep history across sessions"
 msgstr ""
 
-#: prefs.js:118
+#: prefs.js:138
 msgid "Save the history to disk so it survives restarts"
 msgstr ""
 
-#: prefs.js:119
+#: prefs.js:139
 msgid "Save images"
 msgstr ""
 
-#: prefs.js:120
+#: prefs.js:140
 msgid "Maximum image size"
 msgstr ""
 
-#: prefs.js:120
+#: prefs.js:140
 msgid "MiB"
 msgstr ""
 
-#: prefs.js:123
+#: prefs.js:143
 msgid "Privacy"
 msgstr ""
 
-#: prefs.js:124
+#: prefs.js:144
 msgid "Private mode"
 msgstr ""
 
-#: prefs.js:124
+#: prefs.js:144
 msgid "Do not record anything that is copied"
 msgstr ""
 
-#: prefs.js:125
+#: prefs.js:145
 msgid "Ignore secret content"
 msgstr ""
 
-#: prefs.js:126
+#: prefs.js:146
 msgid ""
 "Honor the hint set by password managers such as KeePassXC when they copy a "
 "password"
 msgstr ""
 
-#: prefs.js:130
+#: prefs.js:153
 msgid "Accounts"
 msgstr ""
 
-#: prefs.js:134 lib/popup.js:210
+#: prefs.js:156 lib/popup.js:347
 msgid "Notes & Accounts"
 msgstr ""
 
-#: prefs.js:135
+#: prefs.js:157
 msgid ""
 "Passwords are stored encrypted in the GNOME Keyring (Passwords and Keys / "
 "Seahorse). Titles, usernames and notes are stored in the data folder."
 msgstr ""
 
-#: prefs.js:137
+#: prefs.js:158
 msgid "Clear copied passwords after"
 msgstr ""
 
-#: prefs.js:138
+#: prefs.js:159
 msgid "seconds (0 = never)"
 msgstr ""
 
-#: prefs.js:141
+#: prefs.js:162
 msgid "Data folder"
 msgstr ""
 
-#: prefs.js:151
+#: prefs.js:172
 msgid "About"
 msgstr ""
 
-#: prefs.js:154
+#: prefs.js:176
 #, javascript-format
 msgid "Version %s · Report issues and contribute on GitHub"
 msgstr ""
 
-#: lib/popup.js:32
+#: prefs.js:186
+msgid "Passwords"
+msgstr ""
+
+#: prefs.js:188
+msgid "Password Generator"
+msgstr ""
+
+#: prefs.js:189
+msgid ""
+"Used by the shortcut, the key button in the popup and the account editor. "
+"Passwords come from a cryptographic random source and include at least one "
+"character of every enabled type."
+msgstr ""
+
+#: prefs.js:190
+msgid "Shortcut"
+msgstr ""
+
+#: prefs.js:191
+msgid "Length"
+msgstr ""
+
+#: prefs.js:191
+msgid "characters"
+msgstr ""
+
+#: prefs.js:192
+msgid "Uppercase letters"
+msgstr ""
+
+#: prefs.js:193
+msgid "Lowercase letters"
+msgstr ""
+
+#: prefs.js:194
+msgid "Digits"
+msgstr ""
+
+#: prefs.js:197
+msgid "Symbols"
+msgstr ""
+
+#: prefs.js:202
+msgid "Allowed symbols"
+msgstr ""
+
+#: prefs.js:207
+msgid "Restore the default symbols"
+msgstr ""
+
+#: prefs.js:215
+msgid "Avoid look-alike characters"
+msgstr ""
+
+#: prefs.js:216
+msgid ""
+"Leaves out characters that are easy to confuse, like 0 and O or 1, l and I"
+msgstr ""
+
+#: prefs.js:220
+msgid "Preview"
+msgstr ""
+
+#: prefs.js:236
+msgid "Generate another one"
+msgstr ""
+
+#: prefs.js:249
+msgid "Weak"
+msgstr ""
+
+#: prefs.js:251
+msgid "Fair"
+msgstr ""
+
+#: prefs.js:253
+msgid "Strong"
+msgstr ""
+
+#: prefs.js:255
+msgid "Very strong"
+msgstr ""
+
+#: prefs.js:256
+#, javascript-format
+msgid "Strength: %s (about %d bits of entropy)"
+msgstr ""
+
+#: lib/popup.js:33
 msgid "↵ paste · ⇧↵ copy · Ctrl+P pin · Ctrl+S to notes · Del remove"
 msgstr ""
 
-#: lib/popup.js:34
+#: lib/popup.js:35
 msgid "↵ paste · Ctrl+U username · Ctrl+N new · Ctrl+E edit · Del remove"
 msgstr ""
 
-#: lib/popup.js:36
+#: lib/popup.js:37
 msgid "Ctrl+S / Ctrl+↵ save · Tab next field · Esc cancel"
 msgstr ""
 
-#: lib/popup.js:59
+#: lib/popup.js:100
 msgid "now"
 msgstr ""
 
-#: lib/popup.js:61
+#: lib/popup.js:102
 #, javascript-format
 msgid "%d min"
 msgstr ""
 
-#: lib/popup.js:63
+#: lib/popup.js:104
 #, javascript-format
 msgid "%d h"
 msgstr ""
 
-#: lib/popup.js:65
+#: lib/popup.js:106
 #, javascript-format
 msgid "%d d"
 msgstr ""
 
-#: lib/popup.js:238
+#: lib/popup.js:353
+msgid "New note or account (Ctrl+N)"
+msgstr ""
+
+#: lib/popup.js:356
+msgid "Clear history (pinned items are kept)"
+msgstr ""
+
+#: lib/popup.js:360
+msgid "Private mode is on: click to resume recording"
+msgstr ""
+
+#: lib/popup.js:361
+msgid "Private mode: stop recording what you copy"
+msgstr ""
+
+#: lib/popup.js:370
+msgid "Preferences"
+msgstr ""
+
+#: lib/popup.js:382
 msgid "Search…"
 msgstr ""
 
-#: lib/popup.js:393
+#: lib/popup.js:484
+msgid "Everything you copied"
+msgstr ""
+
+#: lib/popup.js:485
+msgid "Saved notes and accounts"
+msgstr ""
+
+#: lib/popup.js:539
 msgid "image"
 msgstr ""
 
-#: lib/popup.js:433
+#: lib/popup.js:591
+msgid "Pinned"
+msgstr ""
+
+#: lib/popup.js:594
+msgid "Recent"
+msgstr ""
+
+#: lib/popup.js:594
+msgid "Other"
+msgstr ""
+
+#: lib/popup.js:603
 msgid "No results"
 msgstr ""
 
-#: lib/popup.js:435
+#: lib/popup.js:605
 msgid ""
 "No notes or accounts yet.\n"
 "Press + or Ctrl+N to create one."
 msgstr ""
 
-#: lib/popup.js:437
+#: lib/popup.js:607
 msgid "Private mode is on: nothing is being recorded."
 msgstr ""
 
-#: lib/popup.js:438
+#: lib/popup.js:608
 msgid ""
 "Your clipboard history is empty.\n"
 "Copy something with Ctrl+C."
 msgstr ""
 
-#: lib/popup.js:480
+#: lib/popup.js:651
 msgid "(whitespace)"
 msgstr ""
 
-#: lib/popup.js:533
-msgid "Untitled"
+#: lib/popup.js:679
+#, javascript-format
+msgid "Copied on %s"
 msgstr ""
 
-#: lib/popup.js:550 lib/popup.js:711
-msgid "Username"
+#: lib/popup.js:682
+msgid "Save as a note (Ctrl+S)"
 msgstr ""
 
-#: lib/popup.js:554
-msgid "Password"
-msgstr ""
-
-#: lib/popup.js:602
-msgid "This account has no username"
-msgstr ""
-
-#: lib/popup.js:620
-msgid "Press again to delete permanently"
-msgstr ""
-
-#: lib/popup.js:639
-msgid "Press again to clear the history (pinned items are kept)"
+#: lib/popup.js:687 lib/popup.js:744
+msgid "Unpin (Ctrl+P)"
 msgstr ""
 
 #: lib/popup.js:687
-msgid "Note"
+msgid "Pin: keep it at the top, even after clearing (Ctrl+P)"
 msgstr ""
 
-#: lib/popup.js:688
-msgid "Account"
+#: lib/popup.js:693
+msgid "Remove from history (Del)"
 msgstr ""
 
-#: lib/popup.js:707
-msgid "e.g. Work email"
+#: lib/popup.js:715
+msgid "Untitled"
 msgstr ""
 
-#: lib/popup.js:708
-msgid "Title"
+#: lib/popup.js:732 lib/popup.js:894
+msgid "Username"
 msgstr ""
 
-#: lib/popup.js:710
-msgid "username or email"
-msgstr ""
-
-#: lib/popup.js:713 lib/popup.js:779
-msgid "password"
-msgstr ""
-
-#: lib/popup.js:713
-msgid "Loading from keyring…"
-msgstr ""
-
-#: lib/popup.js:735
-msgid "Password (stored in the GNOME Keyring)"
+#: lib/popup.js:732
+msgid "Paste the username (Ctrl+U)"
 msgstr ""
 
 #: lib/popup.js:736
+msgid "Password"
+msgstr ""
+
+#: lib/popup.js:736
+msgid "Paste the password (Enter)"
+msgstr ""
+
+#: lib/popup.js:744
+msgid "Pin: keep it at the top (Ctrl+P)"
+msgstr ""
+
+#: lib/popup.js:750
+msgid "Edit (Ctrl+E)"
+msgstr ""
+
+#: lib/popup.js:754
+msgid "Delete (press twice to confirm)"
+msgstr ""
+
+#: lib/popup.js:785
+msgid "This account has no username"
+msgstr ""
+
+#: lib/popup.js:803
+msgid "Press again to delete permanently"
+msgstr ""
+
+#: lib/popup.js:822
+msgid "Press again to clear the history (pinned items are kept)"
+msgstr ""
+
+#: lib/popup.js:870
+msgid "Note"
+msgstr ""
+
+#: lib/popup.js:871
+msgid "Account"
+msgstr ""
+
+#: lib/popup.js:890
+msgid "e.g. Work email"
+msgstr ""
+
+#: lib/popup.js:891
+msgid "Title"
+msgstr ""
+
+#: lib/popup.js:893
+msgid "username or email"
+msgstr ""
+
+#: lib/popup.js:896 lib/popup.js:963
+msgid "password"
+msgstr ""
+
+#: lib/popup.js:896
+msgid "Loading from keyring…"
+msgstr ""
+
+#: lib/popup.js:902
+msgid "Show password"
+msgstr ""
+
+#: lib/popup.js:902
+msgid "Hide password"
+msgstr ""
+
+#: lib/popup.js:912
+msgid "Generate a strong password"
+msgstr ""
+
+#: lib/popup.js:919
+msgid "Password (stored in the GNOME Keyring)"
+msgstr ""
+
+#: lib/popup.js:920
 msgid "Password (⚠ no keyring available: stored unencrypted)"
 msgstr ""
 
-#: lib/popup.js:738
+#: lib/popup.js:922
 msgid "https://… (optional)"
 msgstr ""
 
-#: lib/popup.js:739
+#: lib/popup.js:923
 msgid "URL"
 msgstr ""
 
-#: lib/popup.js:741
+#: lib/popup.js:925
 msgid "Type here…"
 msgstr ""
 
-#: lib/popup.js:757 lib/popup.js:802
+#: lib/popup.js:941 lib/popup.js:986
 msgid "Content"
 msgstr ""
 
-#: lib/popup.js:761
+#: lib/popup.js:945
 msgid "Cancel"
 msgstr ""
 
-#: lib/popup.js:763
+#: lib/popup.js:947
 msgid "Save"
 msgstr ""
 
-#: lib/popup.js:784
+#: lib/popup.js:968
 msgid "Could not read the keyring"
 msgstr ""
 
-#: lib/popup.js:802
+#: lib/popup.js:986
 msgid "Notes"
 msgstr ""
 
-#: lib/popup.js:825
+#: lib/popup.js:1009
 msgid "Enter at least a title or some content"
 msgstr ""
 
-#: lib/popup.js:846
+#: lib/popup.js:1030
 #, javascript-format
 msgid "Error saving the password: %s"
 msgstr ""
