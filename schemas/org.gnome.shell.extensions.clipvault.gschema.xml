@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.clipvault"
+          path="/org/gnome/shell/extensions/clipvault/">
+
+    <!-- Shortcuts -->
+    <key name="toggle-history" type="as">
+      <default><![CDATA[['<Super>v']]]></default>
+      <summary>Open the clipboard history</summary>
+    </key>
+    <key name="toggle-notes" type="as">
+      <default><![CDATA[['<Super><Shift>v']]]></default>
+      <summary>Open the notes and accounts section</summary>
+    </key>
+    <key name="free-super-v" type="b">
+      <default>true</default>
+      <summary>Remove our shortcuts from GNOME's notification list shortcut</summary>
+    </key>
+    <key name="removed-message-tray-bindings" type="as">
+      <default>[]</default>
+      <summary>Shortcuts removed from toggle-message-tray, restored on disable</summary>
+    </key>
+
+    <!-- Behavior -->
+    <key name="paste-on-select" type="b">
+      <default>true</default>
+      <summary>Paste automatically when an item is selected</summary>
+    </key>
+    <key name="paste-keys" type="s">
+      <choices>
+        <choice value="shift-insert"/>
+        <choice value="ctrl-v"/>
+      </choices>
+      <default>'shift-insert'</default>
+      <summary>Key combination simulated to paste text</summary>
+    </key>
+    <key name="popup-position" type="s">
+      <choices>
+        <choice value="pointer"/>
+        <choice value="center"/>
+      </choices>
+      <default>'pointer'</default>
+      <summary>Where the popup appears</summary>
+    </key>
+    <key name="popup-width" type="i">
+      <default>420</default>
+      <range min="300" max="1000"/>
+      <summary>Popup width in pixels</summary>
+    </key>
+    <key name="popup-height" type="i">
+      <default>540</default>
+      <range min="300" max="1200"/>
+      <summary>Popup height in pixels</summary>
+    </key>
+    <key name="show-panel-icon" type="b">
+      <default>true</default>
+      <summary>Show an icon in the top bar</summary>
+    </key>
+
+    <!-- History -->
+    <key name="history-size" type="i">
+      <default>100</default>
+      <range min="5" max="2000"/>
+      <summary>Maximum number of unpinned items</summary>
+    </key>
+    <key name="save-history" type="b">
+      <default>true</default>
+      <summary>Keep the history across sessions</summary>
+    </key>
+    <key name="save-images" type="b">
+      <default>true</default>
+      <summary>Also record copied images</summary>
+    </key>
+    <key name="max-image-size" type="i">
+      <default>10</default>
+      <range min="1" max="100"/>
+      <summary>Maximum image size in MiB</summary>
+    </key>
+    <key name="ignore-sensitive" type="b">
+      <default>true</default>
+      <summary>Ignore content that password managers mark as secret</summary>
+    </key>
+    <key name="private-mode" type="b">
+      <default>false</default>
+      <summary>Private mode: record nothing while enabled</summary>
+    </key>
+
+    <!-- Accounts -->
+    <key name="clear-secret-seconds" type="i">
+      <default>30</default>
+      <range min="0" max="3600"/>
+      <summary>Clear a copied password from the clipboard after N seconds (0 = never)</summary>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,44 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "**Never paste clipboard contents, notes or passwords here.**"
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: gnome
+    attributes:
+      label: GNOME Shell version
+      placeholder: "output of: gnome-shell --version"
+    validations:
+      required: true
+  - type: dropdown
+    id: session
+    attributes:
+      label: Session type
+      options: [Wayland, X11]
+    validations:
+      required: true
+  - type: input
+    id: distro
+    attributes:
+      label: Distribution
+      placeholder: Ubuntu 24.04, Fedora 41…
+  - type: input
+    id: version
+    attributes:
+      label: ClipVault version
+      placeholder: Shown in Preferences → Accounts → About
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: "Output of `make logs` or `journalctl -o cat /usr/bin/gnome-shell | grep -i clipvault` while reproducing"
+      render: text
