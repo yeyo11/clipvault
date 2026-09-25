@@ -36,11 +36,13 @@
     </key>
     <key name="popup-position" type="s">
       <choices>
+        <choice value="caret"/>
         <choice value="pointer"/>
         <choice value="center"/>
       </choices>
-      <default>'pointer'</default>
+      <default>'caret'</default>
       <summary>Where the popup appears</summary>
+      <description>caret: below the text cursor of the focused field, falling back to the mouse pointer when the application does not report it. pointer: next to the mouse pointer. center: center of the screen.</description>
     </key>
     <key name="popup-width" type="i">
       <default>420</default>

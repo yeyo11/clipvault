@@ -46,6 +46,7 @@ extension.js     Entry point. Watches the clipboard, registers shortcuts, simula
 lib/popup.js     The popup UI: tabs, search, history/notes lists, note/account editor
                  and all keyboard handling.
 lib/store.js     Persistence of history, images and notes (~/.local/share/clipvault).
+lib/caret.js     Tracks the text cursor position reported through IBus, for popup placement.
 lib/secrets.js   Account passwords in the GNOME Keyring (libsecret) and the password generator.
 prefs.js         Preferences window (libadwaita).
 stylesheet.css   Popup styles (all classes are prefixed with `cv-`).

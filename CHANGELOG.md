@@ -6,6 +6,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+### Added
+- The popup now opens right below the text cursor of the focused field, like Windows' Win+V.
+  It falls back to the mouse pointer when the app doesn't report its cursor. This is the new default
+  "Popup position".
+- Opening the popup from the top bar icon always places it next to the mouse pointer.
+
 ## [1.0.0] - 2026-09-25
 
 ### Added

@@ -20,6 +20,7 @@ import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/ex
 import {Store} from './lib/store.js';
 import {ClipboardPopup, TAB_HISTORY, TAB_NOTES} from './lib/popup.js';
 import * as Secrets from './lib/secrets.js';
+import {CaretTracker} from './lib/caret.js';
 
 // evdev key codes for the virtual keyboard
 const KEY_SHIFT_L = 42;
@@ -36,6 +37,7 @@ export default class ClipVaultExtension extends Extension {
         this.settings = this.getSettings();
         this.store = new Store(this.settings);
         this._clipboard = St.Clipboard.get_default();
+        this._caret = new CaretTracker();
         this._popup = new ClipboardPopup(this);
         this._timeouts = new Set();
         this._ignoredText = null;
@@ -68,6 +70,8 @@ export default class ClipVaultExtension extends Extension {
     disable() {
         this._popup.destroy();
         this._popup = null;
+        this._caret.destroy();
+        this._caret = null;
 
         this._settingsIds.forEach(id => this.settings.disconnect(id));
         this._settingsIds = null;
@@ -148,7 +152,7 @@ export default class ClipVaultExtension extends Extension {
                 if (event.get_button() === Clutter.BUTTON_MIDDLE)
                     this.settings.set_boolean('private-mode', !this.settings.get_boolean('private-mode'));
                 else
-                    this._popup.toggle(event.get_button() === Clutter.BUTTON_SECONDARY ? TAB_NOTES : TAB_HISTORY);
+                    this._popup.toggle(event.get_button() === Clutter.BUTTON_SECONDARY ? TAB_NOTES : TAB_HISTORY, 'pointer');
                 return Clutter.EVENT_STOP;
             });
             Main.panel.addToStatusArea(this.uuid, this._indicator);
@@ -216,6 +220,11 @@ export default class ClipVaultExtension extends Extension {
     }
 
     // -------------------------------------------------------- API for popup
+
+    /** Caret rectangle of the focused text field, or null. */
+    get caretRect() {
+        return this._caret.rect;
+    }
 
     /**
      * Puts text on the clipboard and optionally pastes it.

@@ -4,7 +4,7 @@
 
 **Windows-style clipboard history for GNOME, with a vault for notes and accounts.**
 
-Press <kbd>Super</kbd>+<kbd>V</kbd>, pick what you copied earlier, and it gets pasted into the window you were using.
+Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right under your text cursor, and whatever you pick is typed into that field.
 
 [![License: GPL v3+](https://img.shields.io/badge/License-GPLv3+-blue.svg)](LICENSE)
 ![GNOME Shell 46–48](https://img.shields.io/badge/GNOME_Shell-46_|_47_|_48-4a86cf?logo=gnome&logoColor=white)
@@ -17,7 +17,8 @@ Press <kbd>Super</kbd>+<kbd>V</kbd>, pick what you copied earlier, and it gets p
 ## Features
 
 **Clipboard history**
-- Opens with <kbd>Super</kbd>+<kbd>V</kbd>, next to the mouse pointer or in the center of the screen.
+- Opens with <kbd>Super</kbd>+<kbd>V</kbd> **right below the text cursor** of the field you are typing in, just like Windows.
+  If the app doesn't report its cursor, it opens next to the mouse pointer. It can also open centered.
 - Records **text and images**, skips duplicates and moves reused items back to the top.
 - **Instant search**, full keyboard navigation and **pinned items** that survive "Clear history".
 - **Pastes straight into the previous window**. Use <kbd>Shift</kbd>+<kbd>Enter</kbd> to copy without pasting.
@@ -39,6 +40,8 @@ Press <kbd>Super</kbd>+<kbd>V</kbd>, pick what you copied earlier, and it gets p
 - Takes over <kbd>Super</kbd>+<kbd>V</kbd>, which GNOME uses for the notification list, and gives it back when the extension is disabled.
 - Top bar icon (optional): left click for history, right click for notes, middle click for private mode.
 - Translatable UI. It ships in English and Spanish.
+
+<p align="center"><img src="docs/screenshots/caret.png" width="600" alt="The popup opens under the text cursor"></p>
 
 <details>
 <summary><b>More screenshots</b></summary>
@@ -107,7 +110,7 @@ Open them from the ⚙ button in the popup, from the Extensions app, or with `ma
 | Take over Super+V from GNOME | On |
 | Paste on select | On |
 | Keys used to paste text | <kbd>Shift</kbd>+<kbd>Insert</kbd> (works in terminals too) or <kbd>Ctrl</kbd>+<kbd>V</kbd> |
-| Popup position / size | Next to pointer, 420×540 |
+| Popup position / size | Next to the text cursor (falls back to pointer), 420×540 |
 | History size (unpinned items) | 100 |
 | Keep history across sessions / save images / max image size | On / On / 10 MiB |
 | Private mode / ignore secret content | Off / On |
@@ -138,6 +141,15 @@ See [SECURITY.md](SECURITY.md) to report a vulnerability.
 
 Check that *Take over Super+V from GNOME* is enabled and that no other extension binds the same key.
 Run `make logs` and press the shortcut to see errors.
+</details>
+
+<details>
+<summary><b>The popup opens next to the mouse instead of the text cursor</b></summary>
+
+ClipVault learns where the text cursor is from the input method framework (IBus), the same way GNOME
+places the input-method candidate window. Most GTK, Qt, LibreOffice and terminal apps report it. Some
+don't: certain Electron apps, and apps started without IBus support, for example with
+`GTK_IM_MODULE=xim`. In those apps the popup falls back to the mouse pointer.
 </details>
 
 <details>

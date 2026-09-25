@@ -98,6 +98,7 @@ export default class ClipVaultPreferences extends ExtensionPreferences {
             ['ctrl-v', _('Ctrl+V')],
         ]));
         behaviour.add(comboRow(settings, 'popup-position', _('Popup position'), [
+            ['caret', _('Next to the text cursor (like Windows)')],
             ['pointer', _('Next to the mouse pointer')],
             ['center', _('Center of the screen')],
         ]));
