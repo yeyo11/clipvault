@@ -68,6 +68,6 @@ Paste this in the upload form's notes field, or as a comment if the reviewer ask
 
 ## Supported GNOME versions
 
-`shell-version` in `metadata.json` lists 46–48. Before adding a new GNOME release, test it in a
+`shell-version` in `metadata.json` lists 46–50. Before adding a new GNOME release, test it in a
 nested session (`dbus-run-session -- gnome-shell --nested --wayland`, or `--devkit` on GNOME 49+),
 and check the [porting guide](https://gjs.guide/extensions/upgrading/) for that version.

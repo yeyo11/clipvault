@@ -7,7 +7,7 @@
 Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right under your text cursor, and whatever you pick is typed into that field.
 
 [![License: GPL v3+](https://img.shields.io/badge/License-GPLv3+-blue.svg)](LICENSE)
-![GNOME Shell 46–48](https://img.shields.io/badge/GNOME_Shell-46_|_47_|_48-4a86cf?logo=gnome&logoColor=white)
+![GNOME Shell 46–50](https://img.shields.io/badge/GNOME_Shell-46_|_47_|_48_|_49_|_50-4a86cf?logo=gnome&logoColor=white)
 [![CI](https://github.com/yeyo11/clipvault/actions/workflows/ci.yml/badge.svg)](https://github.com/yeyo11/clipvault/actions/workflows/ci.yml)
 
 <img src="docs/screenshots/history.png" width="360" alt="Clipboard history"> <img src="docs/screenshots/notes.png" width="360" alt="Notes and accounts">
@@ -64,7 +64,7 @@ Press <kbd>Super</kbd>+<kbd>V</kbd> while typing: the history pops up right unde
 
 ## Installation
 
-Requires GNOME Shell 46, 47 or 48, which covers Ubuntu 24.04 and later and Fedora 40 and later.
+Requires GNOME Shell 46 to 50, which covers Ubuntu 24.04 and later (including 26.04 LTS) and Fedora 40 and later.
 
 ### Option 1: extensions.gnome.org (easiest, updates automatically)
 

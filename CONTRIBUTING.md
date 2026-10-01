@@ -24,7 +24,7 @@ After each change, run `make install` again and restart GNOME Shell. On X11 use 
 On Wayland, test in a nested session instead of logging out:
 
 ```bash
-dbus-run-session -- gnome-shell --nested --wayland      # GNOME 46–48
+dbus-run-session -- gnome-shell --nested --wayland      # GNOME 46–48 (use --devkit on GNOME 49+)
 ```
 
 Useful targets:

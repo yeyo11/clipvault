@@ -6,6 +6,16 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-10-01
+
+### Added
+- Support for GNOME Shell 49 and 50 (Ubuntu 26.04 LTS).
+
+### Fixed
+- The popup failed to open on GNOME Shell 50, where `Clutter.Grab.get_seat_state()` no longer exists.
+- Closing the popup no longer throws when nothing has keyboard focus.
+- Restarting IBus no longer logs a warning about an already disposed panel service.
+
 ## [1.1.1] - 2026-09-25
 
 ### Changed
@@ -59,7 +69,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - Automatic takeover and restore of GNOME's <kbd>Super</kbd>+<kbd>V</kbd> shortcut.
 - Preferences window, optional top bar icon, and English and Spanish translations.
 
-[Unreleased]: https://github.com/yeyo11/clipvault/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/yeyo11/clipvault/compare/v1.1.2...HEAD
+[1.1.2]: https://github.com/yeyo11/clipvault/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/yeyo11/clipvault/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/yeyo11/clipvault/compare/0c9e161...v1.1.0
 [1.0.0]: https://github.com/yeyo11/clipvault/tree/0c9e161
